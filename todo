@@ -1,0 +1,16 @@
+# Broadcast chat ID: -1001704628467
+# Group chat ID: 715258797
+
+15771188
+a89f42f9c4bf7ed47e32324f5d590449
+715258797
+
+# TO DO
+DONE SORT OF send images as well as text if there's a keyword match
+DONE - fix keyword parameters in if statements (or find a better way to do it)
+DONE - add read/write to a file for keywords
+- add image to text function
+DONE - add user input to add/delete keywords
+- add user input to add/delete groups/channels (is this doable?)
+DONE SORT OF - clean up code into functions and files
+- add all printed messages to a log (text file)
