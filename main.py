@@ -7,12 +7,16 @@ import message_processor as process
 import file_handler as file
 from telethon import TelegramClient, events
 from datetime import datetime
+from keep_alive import keep_alive
 
 # Set API ID, API hash, chat ID
 ids = file.get_ids()
 api_id = ids[0]
 api_hash = ids[1]
 chat_id = int(ids[2])
+
+api_id = '13212488'
+api_hash = 'da97d4d3e90fae4d12f48625c0041072'
 
 # Load keywords
 keywords = file.get_keywords()
@@ -25,9 +29,11 @@ current_date = now.strftime("%d/%m/%Y")
 # Set client
 client = TelegramClient('anon', api_id, api_hash)
 
+keep_alive()
+
 # Print to console with date and time
 f.log(f'Session launched at ' + current_date + ', ' + current_time)
-
+f.log('API: ' + api_id)
 
 @client.on(events.NewMessage)
 async def my_event_handler(event):
@@ -40,6 +46,10 @@ async def my_event_handler(event):
     messages_processed = int(counts[0])
     matches_processed = int(counts[1])
     messages_processed += 1
+
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    current_date = now.strftime("%d/%m/%Y")
 
     # Try to get user's name
     try:

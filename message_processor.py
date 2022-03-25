@@ -3,6 +3,10 @@ import re
 
 cmds = f.get_commands()
 
+def remove_suffix(input_string, suffix):
+    if suffix and input_string.endswith(suffix):
+        return input_string[:-len(suffix)]
+    return input_string
 
 def find_word_in_string(w):
     # Checks if string contains keywords. FUNCTION FORMAT > find_word_in_string(keyword)(textToCheck)
@@ -18,7 +22,8 @@ def check_for_keywords(text, keywords):
 
     f.log(f'Checking for keywords...')
     for x in keywords:
-        x = x.removesuffix('\n')
+        # x = x.removesuffix('\n') # python 3.9
+        x = remove_suffix(x, '\n') # replit fix
         if find_word_in_string(x)(text):
             matched.append(x)
             matching = True
@@ -29,7 +34,8 @@ def check_for_keywords(text, keywords):
     else:
         f.log('Keywords matched: ')
         for x in matched:
-            f.log(x.removesuffix('\n'))
+            # f.log(x.removesuffix('\n')) # python 3.9
+            f.log(remove_suffix(x, '\n')) # replit fix
 
     return True
 
@@ -39,7 +45,8 @@ def check_cmd(text):
     f.log(f'Checking for commands...')
     is_command = False
     for x in cmds:
-        if text.startswith(x.removesuffix('\n')):
+        # if text.startswith(x.removesuffix('\n')): # python 3.9
+        if text.startswith(remove_suffix(x, '\n')): # replit fix
             f.log('This is a command: ' + x)
             is_command = True
     if not is_command:

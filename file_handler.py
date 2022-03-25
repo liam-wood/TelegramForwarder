@@ -21,7 +21,7 @@ def add_keyword(word):
     # Add keyword to text file
     try:
         keywords_file = open(r"keywords", "a")
-        keywords_file.writelines(word.lower())
+        keywords_file.writelines(word.lower() + '\n')
         keywords_file.close()
         log('Keyword ' + word + ' successfully added.')
     except:
@@ -45,9 +45,9 @@ def remove_word(word, new_keywords):
 def log(text):
     # Prints to console as normal but also adds to a text file for logging
     print('(' + datetime.now().strftime("%d/%m/%Y") + ', ' + datetime.now().strftime("%H:%M:%S") + '): ' + text)
-    log_file = open(r"message_log", "a")
-    log_file.writelines(text + '\n')
-    log_file.close()
+    # log_file = open(r"message_log", "a")
+    # log_file.writelines(text + '\n')
+    # log_file.close()
 
 
 def get_ids():
